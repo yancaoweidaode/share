@@ -51,7 +51,7 @@
 10. `apt-get update && apt-get install -y sudo`新安装的容器中没有sudo命令，因此需要安装。
 11. `sudo apt-get update && sudo apt-get install -y software-properties-common`新安装的容器中缺少add-apt-repository命令，因此需要安装。
 12. 
-
+```
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
@@ -60,3 +60,4 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricte
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+```
