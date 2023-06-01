@@ -36,3 +36,17 @@
    ```
 
 现在，你可以使用清华源通过 apt 安装软件包了。
+
+
+# docker的安装与使用
+1. `sudo apt-get update`
+2. `sudo apt-get install docker.io`
+3. `docker --version` 验证是否安装成功
+4. `sudo docker pull ubuntu:18.04`从dockerhub中拉取版本为18.04的ubuntu镜像
+5. `sudo docker run --name my-container -d ubuntu:18.04 tail -f /dev/null` 创建一个名为“my-container”的容器并在后台运行
+6. `sudo docker ps`所有正在运行的Docker容器的详细列表，包括容器ID、镜像、命令、创建时间、状态、端口等信息
+7. `docker ps -a`如果您想要查看所有Docker容器的列表，包括正在运行的和停止的容器
+8. `sudo docker exec -it my-container /bin/bash`
+9. `docker stop my_container`关闭正在运行的容器。
+10. `apt-get update && apt-get install -y sudo`新安装的容器中没有sudo命令，因此需要安装。
+11. `sudo apt-get update && sudo apt-get install -y software-properties-common`新安装的容器中缺少add-apt-repository命令，因此需要安装。
