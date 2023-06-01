@@ -70,3 +70,17 @@ deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe 
 sudo apt-get update
 
 ```
+```
+deb https://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+
+```
