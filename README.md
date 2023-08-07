@@ -84,3 +84,18 @@ deb https://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe 
 deb-src https://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
 
 ```
+
+
+## wsl2中使用windows的摄像头
+
+[wsl2连接windows的外接usb设备](https://learn.microsoft.com/zh-cn/windows/wsl/connect-usb)
+1. `wsl --set-default Ubuntu-20.04`设置默认的wsl2版本
+2. `usbipd wsl list`在powershell中查看wsl2中的usb设备
+3. `usbipd wsl attach --busid 4-3`将windows的usb设备挂载到wsl2中，`usbipd wsl detach --busid <busid>`将设备从wsl2中卸载
+4. `apt-get install usbutils `在容器中安装，`lsusb`在容器中查看usb设备
+5. opencv找不到设备，这是因为wsl内核没有camera驱动
+![](picture/can%20not%20open%20usb_camera.png)
+6. [和wsl获取usb camera有关-编译内核-1，这个帖子可以解决/dev中没有video设备的问题，其中登录windows的用户名为quzf3，至于怎么获取用户的名字，可以选择在C:\Users中查看](https://github.com/PINTO0309/wsl2_linux_kernel_usbcam_enable_conf)，这样直接获取摄像头的帧数据，速度比较慢，应该是和摄像头的分辨率有关，[参考这个帖子修改分辨率](https://zenn.dev/pinto0309/articles/e1432253d29e30)，修改相关设置之后opencv获取帧的速度变快了
+8. `sudo docker run --device=/dev/video0 --device=/dev/video1 -it --user root openvino/ubuntu20_dev bash`开启一个容器，同时实现dev设备的映射
+9. 修改opencv获取视频的分辨率之后，程序获取帧的速度明显加快
+![使用摄像头推理所需要的时间](picture/esop/esop_camera_ms.jpg_640.png)
