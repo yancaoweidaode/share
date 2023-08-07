@@ -108,3 +108,9 @@ deb https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe m
 deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
 deb https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
 deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+
+1. [wsl启用systemd](https://zhuanlan.zhihu.com/p/569883693)
+在ubuntu中使用指令`echo -e "[boot]\nsystemd=true" | sudo tee -a /etc/wsl.conf`
+在windows cmd中使用'wsl --shutdown'
+重新启动ubuntu
+`ps --no-headers -o comm 1`判断是否启用成功，如果输出为`systemd`则成功
