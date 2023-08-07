@@ -114,3 +114,7 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted univ
 在windows cmd中使用'wsl --shutdown'
 重新启动ubuntu
 `ps --no-headers -o comm 1`判断是否启用成功，如果输出为`systemd`则成功
+
+**先启动systemd，就可以使用**`sudo apt-get install docker.io`来之间安装docker了
+
+sudo docker run --device=/dev/video0 --device=/dev/video1 -it --user root openvino/ubuntu20_dev bash
