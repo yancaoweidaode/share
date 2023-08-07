@@ -118,3 +118,5 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted univ
 **先启动systemd，就可以使用**`sudo apt-get install docker.io`来之间安装docker了
 
 sudo docker run --device=/dev/video0 --device=/dev/video1 -it --user root openvino/ubuntu20_dev bash
+
+https://gitlab.xpaas.lenovo.com/quzf3/esop.git
