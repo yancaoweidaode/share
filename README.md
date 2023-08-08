@@ -120,3 +120,60 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted univ
 sudo docker run --device=/dev/video0 --device=/dev/video1 -it --user root openvino/ubuntu20_dev bash
 
 https://gitlab.xpaas.lenovo.com/quzf3/esop.git
+
+
+```c++
+#include <opencv2/opencv.hpp>
+#include <ctime>
+#include <iostream>
+using namespace cv;
+unsigned long long currentTimestamp() {
+    struct timespec timestamp;
+    clock_gettime(CLOCK_MONOTONIC, &timestamp);
+    
+    unsigned long long milliseconds = timestamp.tv_sec * 1000 + timestamp.tv_nsec / 1000000;
+
+    return milliseconds;
+}
+int main()
+{
+    // 创建VideoCapture对象，参数为设备索引号（默认为0）
+    VideoCapture cap(0);
+
+    // 检查摄像头是否正确打开
+    if (!cap.isOpened())
+    {
+        std::cerr << "Failed to open the camera." << std::endl;
+        return -1;
+    }
+
+    Mat frame_bgr;
+    while (1) {
+        unsigned long long start = currentTimestamp();
+        cap >> frame_bgr;
+        unsigned long long end = currentTimestamp();
+        std::cout << "time of get a frame is " << end - start << std::endl;
+    }
+
+    imwrite("./out.jpg", frame_bgr);
+
+    // 进行视频捕获和处理的代码...
+
+    return 0;
+}
+```
+```
+cmake_minimum_required(VERSION 3.0)
+project(opencv_usb_camera)
+
+set(CMAKE_CXX_STANDARD 11)
+
+# 查找OpenCV库
+find_package(OpenCV REQUIRED)
+
+# 添加可执行文件
+add_executable(capture capture.cpp)
+
+# 链接OpenCV库
+target_link_libraries(capture ${OpenCV_LIBS})
+```
